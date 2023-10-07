@@ -11,7 +11,7 @@ with open('README.md', encoding='utf-8') as f:
 
 setup(
   name='concat_map',
-  version='0.1.1',
+  version='0.1.2',
   author='Gary William Flake',
   author_email='gary@flake.org',
   description=
