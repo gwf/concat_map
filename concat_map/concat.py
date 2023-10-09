@@ -315,3 +315,22 @@ class Concat:
     return len(self.map) if self.map is not None else 0
 
 ###############################################################################
+
+import os
+import sys
+import mmap
+
+def test():
+
+  def get_item(fname, index):
+    with open(fname, 'r', encoding='utf-8') as f:
+      s = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ)
+      if index < len(s): return chr(s[index])
+      return ""
+
+  file_sizes = [(x, os.path.getsize(x)) for x in sys.argv[1:]]
+  c = Concat(file_sizes, getitem=get_item)
+  print("".join(c), end="")
+
+if __name__ == "__main__":
+  test()
